@@ -63,7 +63,7 @@ class Bouncer {
 
 bn::fixed average_x(bn::vector<Bouncer, MAX_BOUNCERS>& sprites) {
     bn::fixed x_sum = 0;
-    for(bn::sprite_ptr sprite : sprites) {
+    for(Bouncer& sprite : sprites) {
         x_sum += sprite.x();
     }
 
@@ -108,7 +108,7 @@ int main() {
         // if B is pressed print the average to the console
         if(bn::keypad::b_pressed()) {
             // Add all x positions together
-            bn::fixed average = average_x(sprites);
+            bn::fixed average = average_x(bouncers);
            //bn::fixed x_average = average_x(sprites);
            BN_LOG("Average ", average);
         }
