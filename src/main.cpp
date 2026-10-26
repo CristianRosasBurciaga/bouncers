@@ -22,7 +22,7 @@ static constexpr bn::fixed MAX_Y = HALF_SCREEN_HEIGHT;
 static constexpr bn::fixed BASE_SPEED = 2;
 
 // Maximum number of bouncers on screen at once
-static constexpr int MAX_BOUNCERS = 100;
+static constexpr int MAX_BOUNCERS = 20;
 
 class Bouncer {
     public: 
@@ -61,24 +61,26 @@ class Bouncer {
 
 
 
-bn::fixed average_x(bn::vector<bn::sprite_ptr, MAX_BOUNCERS>& sprites) {
+bn::fixed average_x(bn::vector<Bouncer, MAX_BOUNCERS>& sprites) {
     bn::fixed x_sum = 0;
     for(bn::sprite_ptr sprite : sprites) {
         x_sum += sprite.x();
     }
 
-    bn::fixed x_average= x_sum;
+    bn::fixed x_average = x_sum;
 
     // Only divide if we have 1 or more
     // Prevents division by 0
     if(sprites.size() > 0) {
         x_average /= sprites.size();
+        BN_LOG("Average ");
     }
 
     return x_average;
 }
 
-void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers, bn::fixed start_x, bn::fixed start_y) {
+void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers, 
+    bn::fixed start_x, bn::fixed start_y) {
     // Only add if we're below the maximum
     if(bouncers.size() < bouncers.max_size()) {
         bouncers.push_back(Bouncer(start_x, start_y));
@@ -103,13 +105,13 @@ int main() {
             add_bouncer(bouncers, 0, y_spawn);
         }
 
-        // // if B is pressed print the average to the console
-        // if(bn::keypad::b_pressed()) {
-        //     // Add all x positions together
-        //    bn::fixed x_average = average_x(sprites);
-
-        //     BN_LOG("Average x: ", x_average);
-        // }
+        // if B is pressed print the average to the console
+        if(bn::keypad::b_pressed()) {
+            // Add all x positions together
+            bn::fixed average = average_x(sprites);
+           //bn::fixed x_average = average_x(sprites);
+           BN_LOG("Average ", average);
+        }
 
         // for each bouncer
         for(Bouncer& b : bouncers) {
