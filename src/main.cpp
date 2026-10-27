@@ -22,7 +22,7 @@ static constexpr bn::fixed MAX_Y = HALF_SCREEN_HEIGHT;
 static constexpr bn::fixed BASE_SPEED = 2;
 
 // Maximum number of bouncers on screen at once
-static constexpr int MAX_BOUNCERS = 20;
+static constexpr int MAX_BOUNCERS = 100;
 
 class Bouncer {
     public: 
@@ -32,7 +32,7 @@ class Bouncer {
         
         Bouncer(bn::fixed x_start, bn::fixed y_start) :
         sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), 
-        x_speed(BASE_SPEED) {
+        x_speed(BASE_SPEED), y_speed(BASE_SPEED) {
         }
             
         void update() {
@@ -70,6 +70,7 @@ class Bouncer {
             }
 
             sprite.set_x(x);
+            sprite.set_y(y);
         }
 
     private:
