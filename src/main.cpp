@@ -139,7 +139,7 @@ int main() {
         }
 
         // for each bouncer
-        for(int i = 0; i <= bouncers.size(); i++) {
+        for(int i = 0 ; i < bouncers.size(); i++) {
             bouncers[i].update();  
 
             //https://www.w3schools.com/cpp/ref_vector_erase.asp
