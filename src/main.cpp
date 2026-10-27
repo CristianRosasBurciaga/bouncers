@@ -29,14 +29,18 @@ class Bouncer {
         bn::sprite_ptr sprite;
         bn::fixed x_speed;
         bn::fixed y_speed;
-        bn::random random;
+        bn::random& random;
+        bn::fixed rng_speed;
         
         Bouncer(bn::fixed x_start, bn::fixed y_start) :
         sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), 
-        x_speed(random.get_unbiased_int(1, 5)), y_speed(random.get_unbiased_int(1, 5)) {
+        x_speed(rng_speed), y_speed(rng_speed) {
         }
 
+
         void update() {
+            rng_speed = random.get_unbiased_fixed(1, 5);
+
             bn::fixed x = sprite.x();
             bn::fixed y = sprite.y();
 
