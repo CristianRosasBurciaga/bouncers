@@ -22,7 +22,7 @@ static constexpr bn::fixed MAX_Y = HALF_SCREEN_HEIGHT;
 static constexpr bn::fixed BASE_SPEED = 2;
 
 // Maximum number of bouncers on screen at once
-static constexpr int MAX_BOUNCERS = 100;
+static constexpr int MAX_BOUNCERS = 10;
 
 class Bouncer {
     public: 
@@ -127,7 +127,7 @@ int main() {
     while(true) {
         // if A is pressed add a new bouncer
         if(bn::keypad::a_pressed()) {
-            add_bouncer(bouncers, random, 0, y_spawn, 600);
+            add_bouncer(bouncers, random, 0, y_spawn, 200);
         }
 
         // if B is pressed print the average to the console
@@ -139,12 +139,12 @@ int main() {
         }
 
         // for each bouncer
-        for(int i = 0 ; i < bouncers.size(); i++) {
+        for(int i = bouncers.size() -1; i >= 0; i--) {
             bouncers[i].update();  
 
             //https://www.w3schools.com/cpp/ref_vector_erase.asp
             if(bouncers[i].lifespan <= 0) {
-                bouncers.erase(bouncers.begin() + 1);
+                bouncers.erase(bouncers.begin() + i);
             }
         }
 
