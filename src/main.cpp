@@ -29,11 +29,11 @@ class Bouncer {
         bn::sprite_ptr sprite;
         bn::fixed x_speed;
         bn::fixed y_speed;
-        bn::fixed lifespan;
+        int lifespan;
         
         Bouncer(bn::random& random, bn::fixed x_start, bn::fixed y_start) :
         sprite(bn::sprite_items::purplecat.create_sprite(x_start, y_start)), 
-        x_speed(random.get_int(1, 5)), y_speed(random.get_int(1, 5)), lifespan {
+        x_speed(random.get_int(1, 5)), y_speed(random.get_int(1, 5)), lifespan(lifespan) {
         }
 
         void update() {
@@ -105,7 +105,7 @@ bn::fixed average_x(bn::vector<Bouncer, MAX_BOUNCERS>& sprites) {
 
 void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers, 
     bn::random& random,
-    bn::fixed start_x, bn::fixed start_y, bn::fixed lifespan) {
+    bn::fixed start_x, bn::fixed start_y, int lifespan) {
     // Only add if we're below the maximum
     if(bouncers.size() < bouncers.max_size()) {
         bouncers.push_back(Bouncer(random, start_x, start_y, lifespan));
