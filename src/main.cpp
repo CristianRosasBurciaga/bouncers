@@ -35,6 +35,11 @@ class Bouncer {
         x_speed(BASE_SPEED), y_speed(BASE_SPEED) {
         }
             
+        bn::fixed randomGenerator(bn::fixed min, bn::fixed max) {
+            bn::random x_random;
+            return x_random.get_unbiased_fixed(min,  max);
+        };
+
         void update() {
             bn::fixed x = sprite.x();
             bn::fixed y = sprite.y();
@@ -75,7 +80,6 @@ class Bouncer {
 
     private:
 };
-
 
 
 bn::fixed average_x(bn::vector<Bouncer, MAX_BOUNCERS>& sprites) {
