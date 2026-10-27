@@ -1,4 +1,7 @@
 # Bouncers
 An exercise to learn about functions and classes.
+Click 'A' to create purple cats that will bounce across the screen like crazy tennis balls.
+But they have short lives and disappear quickly!
 
-Please find instructions in [instructions.md](instructions.md).
+## Gameplay preview
+![Bouncers-gif](BouncerGIF.gif)
