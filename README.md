@@ -5,3 +5,6 @@ But they have short lives and disappear quickly!
 
 ## Gameplay preview
 ![Bouncers-gif](BouncerGIF.gif)
+
+## Play the Game
+[Play my game](https://cristianrosasburciaga.github.io/bouncers/)
