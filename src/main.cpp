@@ -64,7 +64,7 @@ class Bouncer {
 bn::fixed average_x(bn::vector<Bouncer, MAX_BOUNCERS>& sprites) {
     bn::fixed x_sum = 0;
     for(Bouncer& sprite : sprites) {
-        x_sum += sprite.x();
+        x_sum += sprite.sprite.x();
     }
 
     bn::fixed x_average = x_sum;
