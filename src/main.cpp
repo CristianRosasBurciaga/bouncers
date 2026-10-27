@@ -139,8 +139,13 @@ int main() {
         }
 
         // for each bouncer
-        for(Bouncer& b : bouncers) {
-            b.update();  
+        for(int i = 0; i <= bouncers.size(); i++) {
+            bouncers[i].update();  
+
+            //https://www.w3schools.com/cpp/ref_vector_erase.asp
+            if(bouncers[i].lifespan <= 0) {
+                bouncers.erase(bouncers.begin() + 1);
+            }
         }
 
         y_spawn += 1;
