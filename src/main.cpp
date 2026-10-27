@@ -29,17 +29,11 @@ class Bouncer {
         bn::sprite_ptr sprite;
         bn::fixed x_speed;
         bn::fixed y_speed;
+        bn::random random;
         
         Bouncer(bn::fixed x_start, bn::fixed y_start) :
         sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), 
-        x_speed(randomGenerator(1, 5)), y_speed(randomGenerator(1, 5)) {
-        }
-
-        int randomGenerator(int min, int max) {
-            bn::random random;
-            int speed = random.get_unbiased_int(min, max);
-            BN_LOG(speed);
-            return speed;
+        x_speed(random.get_unbiased_int(1, 5)), y_speed(random.get_unbiased_int(1, 5)) {
         }
 
         void update() {
