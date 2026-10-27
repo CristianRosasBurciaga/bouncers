@@ -31,7 +31,7 @@ class Bouncer {
         bn::fixed y_speed;
         int lifespan;
         
-        Bouncer(bn::random& random, bn::fixed x_start, bn::fixed y_start) :
+        Bouncer(bn::random& random, bn::fixed x_start, bn::fixed y_start, int lifespan) :
         sprite(bn::sprite_items::purplecat.create_sprite(x_start, y_start)), 
         x_speed(random.get_int(1, 5)), y_speed(random.get_int(1, 5)), lifespan(lifespan) {
         }
@@ -39,7 +39,6 @@ class Bouncer {
         void update() {
             bn::fixed x = sprite.x();
             bn::fixed y = sprite.y();  
-            lifespan = 600;
 
             // Update x position by adding speed
             x += x_speed;
@@ -128,7 +127,7 @@ int main() {
     while(true) {
         // if A is pressed add a new bouncer
         if(bn::keypad::a_pressed()) {
-            add_bouncer(bouncers, random, 0, y_spawn);
+            add_bouncer(bouncers, random, 0, y_spawn, 600);
         }
 
         // if B is pressed print the average to the console
