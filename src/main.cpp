@@ -29,11 +29,12 @@ class Bouncer {
         bn::sprite_ptr sprite;
         bn::fixed x_speed;
         bn::fixed y_speed;
-        bn::random& random;
+        // bn::random& random;
         
         Bouncer(bn::random& random, bn::fixed x_start, bn::fixed y_start) :
         sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), 
         x_speed(random.get_unbiased_int(1, 5)), y_speed(random.get_unbiased_int(1, 5)) {
+            // BN_LOG(random.get_unbiased_int(1, 5));
         }
 
         void update() {
@@ -121,7 +122,7 @@ int main() {
     while(true) {
         // if A is pressed add a new bouncer
         if(bn::keypad::a_pressed()) {
-            add_bouncer(bouncers,random, 0, y_spawn);
+            add_bouncer(bouncers, random, 0, y_spawn);
         }
 
         // if B is pressed print the average to the console
